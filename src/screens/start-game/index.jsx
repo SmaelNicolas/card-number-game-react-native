@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import { Card } from "../../components";
+import { colors } from "../../constants/themes/colors";
 import { styles } from "./styles";
 
 export const StartGame = () => {
@@ -16,12 +17,12 @@ export const StartGame = () => {
 				/>
 				<View style={styles.buttonContainer}>
 					<Button
-						color="#c4e4e9"
+						color={colors.primary}
 						title="Reiniciar"
 						onPress={() => console.log()}
 					/>
 					<Button
-						color="#97a1e8"
+						color={colors.primary}
 						title="Confirmar"
 						onPress={() => console.log()}
 					/>
