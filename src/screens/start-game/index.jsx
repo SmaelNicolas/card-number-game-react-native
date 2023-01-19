@@ -8,7 +8,11 @@ export const StartGame = () => {
 			<Text style={styles.title}>Comenzar Juego</Text>
 			<View style={styles.inputContainer}>
 				<Text style={styles.label}>Escribe un numero</Text>
-				<TextInput placeholder="0" style={styles.input} />
+				<TextInput
+					placeholder="0"
+					style={styles.input}
+					keyboardType="numeric"
+				/>
 			</View>
 			<View style={styles.buttonContainer}>
 				<Button
