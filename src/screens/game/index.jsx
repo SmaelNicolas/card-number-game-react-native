@@ -2,19 +2,8 @@ import React, { useState } from "react";
 import { Button, Text, View } from "react-native";
 import { Card, NumberContainer } from "../../components";
 import { colors } from "../../constants/themes/colors";
+import { generateRandomNumber } from "../../utils/randomNumber";
 import { styles } from "./styles";
-
-const generateRandomNumber = (min, max, exclude) => {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	const randomNumber = Math.floor(Math.random() * (max - min) + min);
-
-	if (randomNumber === exclude) {
-		generateRandomNumber(min, max, exclude);
-	} else {
-		return randomNumber;
-	}
-};
 
 export const GameScreen = ({ userNumber }) => {
 	const [currentGuest, setCurrentGuest] = useState(
