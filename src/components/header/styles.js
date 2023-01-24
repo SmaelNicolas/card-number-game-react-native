@@ -12,6 +12,5 @@ export const styles = StyleSheet.create({
 	title: {
 		fontSize: 20,
 		color: colors.white,
-		fontFamily: "Karma-Bold",
 	},
 });
