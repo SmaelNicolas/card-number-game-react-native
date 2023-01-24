@@ -1,4 +1,3 @@
-import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { ActivityIndicator, Text, View } from "react-native";
@@ -45,7 +44,6 @@ export const App = () => {
 	const RenderGame = () =>
 		!showWelcome && (
 			<View style={styles.container}>
-				<StatusBar style="auto" />
 				<Header name={name} title="Guess the number" />
 				<Content />
 			</View>
