@@ -5,12 +5,7 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "center",
-	},
-	title: {
-		fontSize: 18,
-		color: colors.text,
-		textAlign: "center",
-		paddingVertical: 31,
+		backgroundColor: colors.background,
 	},
 	inputContainer: {
 		justifyContent: "center",
@@ -19,9 +14,10 @@ export const styles = StyleSheet.create({
 	},
 	label: {
 		fontSize: 18,
-		color: colors.text,
+		color: colors.background,
+		fontFamily: "Raleway-Medium",
 		textAlign: "center",
-		paddingVertical: 31,
+		paddingVertical: 5,
 	},
 	input: {
 		width: "100%",
@@ -29,13 +25,23 @@ export const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		minWidth: 70,
 		fontSize: 22,
-		paddingVertical: 10,
+		marginVertical: 40,
+		padding: 4,
 		textAlign: "center",
+		fontFamily: "Raleway-Regular",
 	},
 	buttonContainer: {
 		flexDirection: "row",
 		width: "100%",
 		justifyContent: "space-around",
 		marginTop: 20,
+	},
+	confirmedContainer: {
+		backgroundColor: colors.primary,
+	},
+	confirmedTitle: {
+		color: colors.background,
+		fontFamily: "Raleway-Bold",
+		fontSize: 20,
 	},
 });

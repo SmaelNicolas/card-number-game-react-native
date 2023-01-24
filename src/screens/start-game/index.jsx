@@ -31,11 +31,11 @@ export const StartGame = ({ onStartGame }) => {
 		const chosenNumber = parseInt(enteredValue, 10);
 		if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber >= 99) {
 			Alert.alert(
-				"Numero invalido",
-				"El numero no debe ser entre 1 y 99",
+				"Invalid number",
+				"Please write a number between 1 and 99",
 				[
 					{
-						text: "Entendido",
+						text: "Ok, Sorry",
 						style: "destructive",
 						onPress: onHandleReset,
 					},
@@ -55,40 +55,42 @@ export const StartGame = ({ onStartGame }) => {
 	const Confirmed = () =>
 		confirmed && (
 			<Card style={styles.confirmedContainer}>
-				<Text style={styles.confirmedTitle}>Numero Seleccionado</Text>
+				<Text style={styles.confirmedTitle}>Number selected</Text>
 				<NumberContainer number={selectedNumber} />
 				<Button
-					title="Iniciar Juego"
+					title="Start Game"
 					onPress={onHandleStartGame}
-					color={colors.primary}
+					color={colors.background}
 				/>
 			</Card>
 		);
+
 	return (
 		<TouchableWithoutFeedback
 			onPress={() => {
 				Keyboard.dismiss();
 			}}>
 			<View style={styles.container}>
-				<Text style={styles.title}>Comenzar Juego</Text>
 				<Card style={styles.inputContainer}>
-					<Text style={styles.label}>Escribe un numero</Text>
+					<Text style={styles.label}>Enter your number</Text>
+					<Text style={styles.label}>between 1 and 99</Text>
 					<TextInput
 						value={enteredValue}
 						onChangeText={onHandlerChange}
 						placeholder="0"
 						style={styles.input}
 						keyboardType="numeric"
+						placeholderTextColor={colors.background}
 					/>
 					<View style={styles.buttonContainer}>
 						<Button
-							color={colors.primary}
-							title="Reiniciar"
+							color={colors.background}
+							title="Reset"
 							onPress={() => onHandleReset(false)}
 						/>
 						<Button
-							color={colors.primary}
-							title="Confirmar"
+							color={colors.background}
+							title="Confirm"
 							onPress={onHandleConfirm}
 						/>
 					</View>
