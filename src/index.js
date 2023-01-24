@@ -53,7 +53,7 @@ export const App = () => {
 		!showWelcome && (
 			<View style={styles.container}>
 				<StatusBar style="auto" />
-				<Header title={`${name} Guess the number`} />
+				<Header name={name} title="Guess the number" />
 				<Content />
 			</View>
 		);
