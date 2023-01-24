@@ -22,20 +22,20 @@ export const GameScreen = ({ userNumber }) => {
 	);
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<Card>
-				<Text>Numero del oponente</Text>
+				<Text style={styles.title}>Lets find your number</Text>
 				<NumberContainer number={currentGuest} />
-				<View>
+				<View style={styles.containerButtons}>
 					<Button
-						title="Menor"
+						title="Lesser"
 						onPress={() => {}}
-						color={colors.primary}
+						color={colors.background}
 					/>
 					<Button
-						title="Mayor"
+						title="Greater"
 						onPress={() => {}}
-						color={colors.primary}
+						color={colors.background}
 					/>
 				</View>
 			</Card>
