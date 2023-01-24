@@ -4,21 +4,31 @@ import { useState } from "react";
 import { ActivityIndicator, Text, View } from "react-native";
 import { Header } from "./components";
 import { colors } from "./constants/themes/colors";
-import { GameScreen, StartGame } from "./screens";
+import { GameScreen, StartGame, WelcomeScreen } from "./screens";
 import { styles } from "./styles";
 
 export const App = () => {
 	const [loaded, error] = useFonts({
-		"Karma-Regular": require("../assets/fonts/Karma-Regular.ttf"),
-		"Karma-Light": require("../assets/fonts/Karma-Light.ttf"),
-		"Karma-Medium": require("../assets/fonts/Karma-Medium.ttf"),
-		"Karma-SemiBold": require("../assets/fonts/Karma-SemiBold.ttf"),
-		"Karma-Bold": require("../assets/fonts/Karma-Bold.ttf"),
+		"Raleway-Thin": require("../assets/fonts/Raleway-Thin.ttf"),
+		"Raleway-ExtraLight": require("../assets/fonts/Raleway-ExtraLight.ttf"),
+		"Raleway-Light": require("../assets/fonts/Raleway-Light.ttf"),
+		"Raleway-Medium": require("../assets/fonts/Raleway-Medium.ttf"),
+		"Raleway-Regular": require("../assets/fonts/Raleway-Regular.ttf"),
+		"Raleway-SemiBold": require("../assets/fonts/Raleway-SemiBold.ttf"),
+		"Raleway-Bold": require("../assets/fonts/Raleway-Bold.ttf"),
+		"Raleway-ExtraBold": require("../assets/fonts/Raleway-ExtraBold.ttf"),
 	});
 	const [userNumber, setUserNumber] = useState(null);
+	const [name, setName] = useState("");
+	const [showWelcome, setShowWelcome] = useState(true);
 
 	const onStartGame = (selectedNumber) => {
 		setUserNumber(selectedNumber);
+	};
+
+	const handleLogged = (value) => {
+		setName(value);
+		setShowWelcome(false);
 	};
 
 	const Content = () =>
@@ -36,11 +46,25 @@ export const App = () => {
 		);
 	}
 
-	return (
-		<View style={styles.container}>
-			<StatusBar style="auto" />
-			<Header title={"Adivine el numero"} />
-			<Content />
-		</View>
+	const RenderWelcome = () =>
+		showWelcome && <WelcomeScreen handleLogged={handleLogged} />;
+
+	const RenderGame = () =>
+		!showWelcome && (
+			<View style={styles.container}>
+				<StatusBar style="auto" />
+				<Header title={`${name} Guess the number`} />
+				<Content />
+			</View>
+		);
+
+	const RenderApp = () => (
+		<>
+			<RenderWelcome />
+			<RenderGame />
+			<StatusBar style="light" />
+		</>
 	);
+
+	return <RenderApp />;
 };
