@@ -43,8 +43,10 @@ export const StartGame = ({ onStartGame }) => {
 			);
 			onHandleReset(false);
 		} else {
+			setConfirmed(true);
 			setSelectedNumber(chosenNumber);
-			onHandleReset(true);
+			setEnteredValue("");
+			onStartGame(chosenNumber);
 		}
 	};
 
