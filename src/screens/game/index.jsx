@@ -15,7 +15,7 @@ export const GameScreen = ({ userNumber, handleGameOver }) => {
 	const currentHigh = useRef(100);
 
 	useEffect(() => {
-		currentGuest === userNumber && handleGameOver(rounds);
+		if (currentGuest === userNumber) handleGameOver(rounds);
 	}, [currentGuest, userNumber, handleGameOver]);
 
 	const onHandleNextGuest = (direction) => {
