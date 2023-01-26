@@ -28,6 +28,11 @@ export const App = () => {
 		setGuessRounds(rounds);
 	};
 
+	const onHandleRestart = () => {
+		setUserNumber(null);
+		setGuessRounds(0);
+	};
+
 	const Content = () => {
 		if (userNumber && guessRounds <= 0) {
 			return (
@@ -38,7 +43,13 @@ export const App = () => {
 			);
 		}
 		if (guessRounds > 0) {
-			return <GameOver />;
+			return (
+				<GameOver
+					onHandleRestart={onHandleRestart}
+					userNumber={userNumber}
+					rounds={rounds}
+				/>
+			);
 		}
 
 		return <StartGame onStartGame={onStartGame} />;
