@@ -47,7 +47,7 @@ export const App = () => {
 				<GameOver
 					onHandleRestart={onHandleRestart}
 					userNumber={userNumber}
-					rounds={rounds}
+					rounds={guessRounds}
 				/>
 			);
 		}
