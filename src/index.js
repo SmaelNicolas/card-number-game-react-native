@@ -4,7 +4,7 @@ import { ActivityIndicator, Text, View } from "react-native";
 import { Header } from "./components";
 import { colors } from "./constants/themes/colors";
 import { useFontCustom } from "./hooks/useFont";
-import { GameScreen, StartGame, WelcomeScreen } from "./screens";
+import { GameOver, GameScreen, StartGame, WelcomeScreen } from "./screens";
 import { styles } from "./styles";
 
 export const App = () => {
@@ -13,6 +13,7 @@ export const App = () => {
 	const [userNumber, setUserNumber] = useState(null);
 	const [name, setName] = useState("");
 	const [showWelcome, setShowWelcome] = useState(true);
+	const [guessRounds, setGuessRounds] = useState(0);
 
 	const onStartGame = (selectedNumber) => {
 		setUserNumber(selectedNumber);
@@ -23,12 +24,25 @@ export const App = () => {
 		setShowWelcome(false);
 	};
 
-	const Content = () =>
-		userNumber ? (
-			<GameScreen userNumber={userNumber} />
-		) : (
-			<StartGame onStartGame={onStartGame} />
-		);
+	const handleGameOver = (rounds) => {
+		setGuessRounds(rounds);
+	};
+
+	const Content = () => {
+		if (userNumber && guessRounds <= 0) {
+			return (
+				<GameScreen
+					userNumber={userNumber}
+					handleGameOver={handleGameOver}
+				/>
+			);
+		}
+		if (guessRounds > 0) {
+			return <GameOver />;
+		}
+
+		return <StartGame onStartGame={onStartGame} />;
+	};
 
 	if (!loaded) {
 		return (
