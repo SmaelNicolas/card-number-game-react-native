@@ -7,6 +7,14 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 	},
+	containerLandScape: {
+		flex: 1,
+		width: "80%",
+		backgroundColor: "#fff",
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-around",
+	},
 	content: {
 		width: "80%",
 		paddingVertical: 20,
