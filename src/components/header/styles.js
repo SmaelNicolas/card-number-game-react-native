@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, StatusBar, StyleSheet } from "react-native";
 import { colors } from "../../constants/themes/colors";
 
 const { width, height } = Dimensions.get("screen");
@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
 		height: height * 0.2,
 		justifyContent: "center",
 		alignItems: "center",
-		paddingTop: 20,
+		paddingTop: StatusBar.currentHeight,
 	},
 	title: {
 		fontSize: 23,
