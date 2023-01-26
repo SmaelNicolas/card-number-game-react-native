@@ -3,6 +3,9 @@ import {
 	Alert,
 	Button,
 	Keyboard,
+	KeyboardAvoidingView,
+	Platform,
+	ScrollView,
 	Text,
 	TextInput,
 	TouchableWithoutFeedback,
@@ -68,37 +71,43 @@ export const StartGame = ({ onStartGame }) => {
 		);
 
 	return (
-		<TouchableWithoutFeedback
-			onPress={() => {
-				Keyboard.dismiss();
-			}}>
-			<View style={styles.container}>
-				<Card style={styles.inputContainer}>
-					<Text style={styles.label}>Enter your number</Text>
-					<Text style={styles.label}>between 1 and 99</Text>
-					<TextInput
-						value={enteredValue}
-						onChangeText={onHandlerChange}
-						placeholder="0"
-						style={styles.input}
-						keyboardType="numeric"
-						placeholderTextColor={colors.background}
-					/>
-					<View style={styles.buttonContainer}>
-						<Button
-							color={colors.background}
-							title="Reset"
-							onPress={() => onHandleReset(false)}
-						/>
-						<Button
-							color={colors.background}
-							title="Confirm"
-							onPress={onHandleConfirm}
-						/>
+		<KeyboardAvoidingView
+			style={styles.containerScroll}
+			behavior={Platform.OS === "ios" ? "height" : "padding"}>
+			<TouchableWithoutFeedback
+				onPress={() => {
+					Keyboard.dismiss();
+				}}>
+				<ScrollView style={styles.containerScroll}>
+					<View style={styles.container}>
+						<Card style={styles.inputContainer}>
+							<Text style={styles.label}>Enter your number</Text>
+							<Text style={styles.label}>between 1 and 99</Text>
+							<TextInput
+								value={enteredValue}
+								onChangeText={onHandlerChange}
+								placeholder="0"
+								style={styles.input}
+								keyboardType="numeric"
+								placeholderTextColor={colors.background}
+							/>
+							<View style={styles.buttonContainer}>
+								<Button
+									color={colors.background}
+									title="Reset"
+									onPress={() => onHandleReset(false)}
+								/>
+								<Button
+									color={colors.background}
+									title="Confirm"
+									onPress={onHandleConfirm}
+								/>
+							</View>
+						</Card>
+						<Confirmed />
 					</View>
-				</Card>
-				<Confirmed />
-			</View>
-		</TouchableWithoutFeedback>
+				</ScrollView>
+			</TouchableWithoutFeedback>
+		</KeyboardAvoidingView>
 	);
 };
