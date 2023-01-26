@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 		backgroundColor: colors.background,
 	},
+	containerScroll: {
+		flex: 1,
+	},
 	inputContainer: {
 		justifyContent: "center",
 		alignItems: "center",
